@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between">
       <div>{{ project?.name }}</div>
       <div>
-        <mat-icon>edit</mat-icon
+        <mat-icon (click)="editProject()">edit</mat-icon
         ><mat-icon (click)="deleteProject(project.id)">delete</mat-icon>
       </div>
     </div>
@@ -22,7 +22,11 @@
     </p>
     <mat-divider class="my-3"></mat-divider>
     <p>Done</p>
-    <p *ngFor="let task of getDoneItems(project.tasks)" class="mb-0">
+    <div
+      *ngFor="let task of getDoneItems(project.tasks); let i = index"
+      class="mb-0 d-flex"
+      ngClass="w-100 p-1"
+    >
       <mat-checkbox
         [checked]="task.done"
         (change)="checkItem(task.id, $event)"
@@ -31,7 +35,11 @@
         matTooltipShowDelay="1000"
         >{{ task.description }}
       </mat-checkbox>
-    </p>
+      <div class="ms-2">
+        <mat-icon (click)="editTask(task)">edit</mat-icon
+        ><mat-icon (click)="deleteTask(task.id)">delete</mat-icon>
+      </div>
+    </div>
   </mat-card-content>
   <mat-divider inset></mat-divider>
   <mat-card-footer>

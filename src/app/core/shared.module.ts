@@ -5,6 +5,7 @@ import { AngularMaterialModule } from '../app-material';
 import { LoadingComponent } from './components/loading/loading.component';
 import { AlertDialogComponent } from './dialogs/alert-dialog/alert-dialog.component';
 import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog/confirmation-dialog.component';
+import { EditDialogComponent } from './dialogs/edit-dialog/edit-dialog.component';
 import { DialogService } from './services/dialog.service';
 import { StorageService } from './services/storage.service';
 
@@ -12,7 +13,8 @@ import { StorageService } from './services/storage.service';
     declarations: [
         AlertDialogComponent,
         ConfirmationDialogComponent,
-        LoadingComponent
+        LoadingComponent,
+        EditDialogComponent
     ],
     imports: [
         RouterModule,

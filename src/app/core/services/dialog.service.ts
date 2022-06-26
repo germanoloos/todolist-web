@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AlertDialogComponent } from '../dialogs/alert-dialog/alert-dialog.component';
 import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog/confirmation-dialog.component';
+import { EditDialogComponent } from '../dialogs/edit-dialog/edit-dialog.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -23,6 +24,14 @@ export class DialogService {
             width: 'auto',
             height: 'auto',
             data: message
+        });
+    }
+
+    editInput(input: string): MatDialogRef<any> {
+        return this.dialog.open(EditDialogComponent, {
+            width: 'auto',
+            height: 'auto',
+            data: input
         });
     }
 }

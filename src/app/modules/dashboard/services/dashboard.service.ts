@@ -38,7 +38,7 @@ export class DashboardService {
     return this.httpClient.put(`${environment.API_URL}/task/${task.id}`, task);
   }
 
-  deleteTask(task: TaskModel): Observable<any>{
-    return this.httpClient.delete(`${environment.API_URL}/task/${task.id}`);
+  deleteTask(taskId: number): Observable<any>{
+    return this.httpClient.delete(`${environment.API_URL}/task/${taskId}`);
   }
 }

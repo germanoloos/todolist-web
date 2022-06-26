@@ -17,6 +17,7 @@ export class ProjectCardComponent implements OnInit {
   @Input() project!: ProjectModel;
   @Output() deleteRequest = new EventEmitter<any>();
   taskForm!: FormGroup;
+  showEditDelete = -1;
 
   constructor(
     private dashboardService: DashboardService,
@@ -28,17 +29,6 @@ export class ProjectCardComponent implements OnInit {
     this.taskForm = this.formBuilder.group({
       description: [null, Validators.required]
     });
-  }
-
-  deleteProject(id: number): void {
-    const confirmation = this.dialogService.confirmation("Do you realy want delete this project?");
-    confirmation.afterClosed().subscribe((ok) => {
-      if (ok) {
-        this.dashboardService.deleteProject(id).subscribe(() => {
-          this.deleteRequest.emit(ok);
-        }, error => console.error(error));
-      }
-    })
   }
 
   onSubmit(formDirective: FormGroupDirective): void {
@@ -73,8 +63,15 @@ export class ProjectCardComponent implements OnInit {
     });
   }
 
-  updateTask(task: TaskModel): Observable<any> {
-    return this.dashboardService.updateTask(task);
+  deleteProject(id: number): void {
+    const confirmation = this.dialogService.confirmation("Do you realy want delete this project?");
+    confirmation.afterClosed().subscribe((ok) => {
+      if (ok) {
+        this.dashboardService.deleteProject(id).subscribe(() => {
+          this.deleteRequest.emit(ok);
+        }, error => console.error(error));
+      }
+    })
   }
 
   getTooltip(task: TaskModel): string {
@@ -85,6 +82,49 @@ export class ProjectCardComponent implements OnInit {
       tooltip += moment(task.finishedAt).format('DD/MM/yyyy HH:mm:ss');
     }
     return tooltip;
+  }
+
+  editProject(): void {
+    const dialog = this.dialogService.editInput(this.project.name);
+    dialog.afterClosed().subscribe((input: string) => {
+      if (input && input.length > 0) {
+        this.project.name = input;
+        this.dashboardService.updateProjet(this.project).subscribe(
+          () => { },
+          error => console.error(error)
+        );
+      }
+    })
+  }
+
+
+  updateTask(task: TaskModel): Observable<any> {
+    return this.dashboardService.updateTask(task);
+  }
+
+  editTask(task: TaskModel): void {
+    const dialog = this.dialogService.editInput(task.description);
+    dialog.afterClosed().subscribe((input: string) => {
+      if (input && input.length > 0) {
+        const _task = this.project.tasks.find(item => item.id === task.id) as TaskModel;
+        _task.description = input;
+        this.updateTask(_task).subscribe(
+          () => { },
+          error => console.error(error)
+        );
+      }
+    })
+  }
+
+  deleteTask(id: number): void {
+    const confirmation = this.dialogService.confirmation("Do you realy want delete this task?");
+    confirmation.afterClosed().subscribe((ok) => {
+      if (ok) {
+        this.dashboardService.deleteTask(id).subscribe(() => {
+          this.project.tasks = this.project.tasks.filter((item) => item.id !== id);
+        }, error => console.error(error));
+      }
+    })
   }
 
 }
