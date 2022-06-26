@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
-import { NgChartsModule } from 'ng2-charts';
 import { AngularMaterialModule } from 'src/app/app-material';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -22,7 +21,6 @@ import { SharedModule } from '@app/core/shared.module';
     DashboardRoutingModule,
     AngularMaterialModule,
     HttpClientModule,
-    NgChartsModule,
     SharedModule
   ]
 })
