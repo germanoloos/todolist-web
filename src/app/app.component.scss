@@ -1,0 +1,29 @@
+app-header {
+    position: relative;
+    box-sizing: border-box;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+router-outlet {
+    position: relative;
+    flex: 1 1 0;
+    order: 2;
+    overflow: auto;
+}
+
+app-footer {
+    position: relative;
+    box-sizing: border-box;
+    flex: none;
+    order: 3;
+    width: 100%;
+}
+
+main {
+    transform-origin: left top;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}

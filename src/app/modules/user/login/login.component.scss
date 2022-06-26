@@ -1,0 +1,34 @@
+:host {
+    height: 100vh;
+    background: linear-gradient(90deg, #170f4f 0%, #33c8d2 100%) !important;
+}
+.cellphone-cover {
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: center;
+}
+
+.signin-box {
+    margin: 0 0 10px;
+    padding: 10px;
+    max-width: 394px;
+    background-color: transparent;
+    p {
+        font-size: 14px;
+        margin: 15px;
+        text-align: center;
+    }
+}
+
+.signin-box {
+    h1 {
+        white-space: nowrap;
+        font-size: 80px;
+        margin: 22px auto 12px;
+        white-space: nowrap;
+        font-size: 25px;
+        color: white;
+        text-align: center;
+    }
+}
+

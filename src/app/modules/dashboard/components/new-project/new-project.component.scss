@@ -1,0 +1,9 @@
+@import "../../../../core/scss/variables.scss";
+
+.new-project {
+    background-color: $light;
+    color: black;
+    min-width: 400px;
+    min-height: 200px;
+    margin: 20px;
+}

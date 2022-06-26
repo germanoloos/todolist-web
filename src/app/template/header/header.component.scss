@@ -1,0 +1,9 @@
+@import "../../../../node_modules/bootstrap/scss/bootstrap";
+mat-toolbar {
+    background-color: #fafafa;
+    color: #838383;
+    height: 80px;
+    font-size: 16px;
+    @extend .px-4;
+    border-bottom: lightgray 1px solid;
+}

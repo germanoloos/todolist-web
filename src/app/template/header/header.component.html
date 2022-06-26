@@ -1,0 +1,17 @@
+<mat-toolbar *ngIf="isAuthenticated()">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center">
+      <p class="flex-grow-1 mt-2">
+        <img src="../../../assets/todo-icon.png" width="35" />
+        TODO List
+      </p>
+
+      <button class="px-3 py-1" mat-button [matMenuTriggerFor]="menu">
+        {{ getUser()?.name }}<mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button class="text-center" (click)="logout()" mat-menu-item>Logout</button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>

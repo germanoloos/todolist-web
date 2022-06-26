@@ -1,0 +1,55 @@
+<mat-card class="project-card">
+  <mat-card-title>
+    <div class="d-flex justify-content-between">
+      <div>{{ project?.name }}</div>
+      <div>
+        <mat-icon>edit</mat-icon
+        ><mat-icon (click)="deleteProject(project.id)">delete</mat-icon>
+      </div>
+    </div>
+  </mat-card-title>
+  <mat-card-content>
+    <p>To Do</p>
+    <p *ngFor="let task of getTodoItems(project.tasks)" class="mb-0">
+      <mat-checkbox
+        [checked]="task.done"
+        (change)="checkItem(task.id, $event)"
+        [matTooltip]="getTooltip(task)"
+        matTooltipPosition="right"
+        matTooltipShowDelay="1000"
+        >{{ task.description }}</mat-checkbox
+      >
+    </p>
+    <mat-divider class="my-3"></mat-divider>
+    <p>Done</p>
+    <p *ngFor="let task of getDoneItems(project.tasks)" class="mb-0">
+      <mat-checkbox
+        [checked]="task.done"
+        (change)="checkItem(task.id, $event)"
+        [matTooltip]="getTooltip(task)"
+        matTooltipPosition="right"
+        matTooltipShowDelay="1000"
+        >{{ task.description }}
+      </mat-checkbox>
+    </p>
+  </mat-card-content>
+  <mat-divider inset></mat-divider>
+  <mat-card-footer>
+    <div>
+      <form
+        [formGroup]="taskForm"
+        class="p-3"
+        (ngSubmit)="onSubmit(formDirective)"
+        #formDirective="ngForm"
+      >
+        <mat-form-field class="w-75 pe-2" appearance="outline">
+          <input matInput formControlName="description" placeholder="Task" />
+          <mat-error *ngIf="taskForm.get('description')?.invalid"
+            >Task description is required</mat-error
+          >
+        </mat-form-field>
+        <button mat-raised-button class="w-25" color="primary">Add</button>
+      </form>
+    </div>
+  </mat-card-footer>
+</mat-card>

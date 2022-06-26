@@ -1,0 +1,69 @@
+@use "@angular/material" as mat;
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@angular/material/theming";
+@import "./app/core/scss/variables.scss";
+@import "./app/core/components/loading/loading.component.scss";
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$todolist-web-primary: mat.define-palette($todolist-primary);
+$todolist-web-accent: mat.define-palette($todolist-accent);
+
+// The warn palette is optional (defaults to red).
+$todolist-web-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$todolist-web-theme: mat.define-light-theme(
+    $todolist-web-primary,
+    $todolist-web-accent,
+    $todolist-web-warn
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($todolist-web-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+    // background-color: $light-accent !important;
+    background: linear-gradient(90deg, #170f4f 0%, #33c8d2 100%) !important;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a:link {
+    text-decoration: none;
+    color: white !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    background: white;
+    border-radius: 5px;
+}
+.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.3em 0 1em 0;
+}
+
+.mat-raised-button {
+    border-radius: 5px !important;
+}
+
+.mat-form-field-outline-start {
+    border-radius: 5px 0 0 5px !important;
+    min-width: 28px !important;
+}
+
+.mat-form-field-outline-end {
+    border-radius: 0 5px 5px 0 !important;
+}
+
+button{
+    height: 48px;
+}

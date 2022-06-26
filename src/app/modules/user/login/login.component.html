@@ -1,0 +1,50 @@
+<app-loading [show]="loading"></app-loading>
+<div class="container">
+  <div class="row" style="height: 100vh">
+    <div class="col-md-12">
+      <div class="d-flex flex-row align-items-center h-100">
+        <div class="mx-auto">
+          <div class="signin-box">
+            <h1>
+              <img src="../../../../assets/todo-icon.png" width="50px" />Login
+            </h1>
+            <form [formGroup]="loginForm" class="p-3" (ngSubmit)="onSubmit()">
+              <mat-form-field class="w-100" appearance="outline">
+                <input matInput formControlName="email" placeholder="Email" />
+                <mat-error *ngIf="loginForm.get('email')?.invalid"
+                  >Email is required</mat-error
+                >
+              </mat-form-field>
+              <mat-form-field class="w-100" appearance="outline">
+                <input
+                  matInput
+                  formControlName="password"
+                  placeholder="Password"
+                />
+                <mat-error *ngIf="loginForm.get('password')?.invalid"
+                  >Password is required</mat-error
+                >
+              </mat-form-field>
+              <button
+                mat-raised-button
+                color="primary"
+                class="w-100 mt-3 mb-3"
+                type="submit"
+              >
+                Signin
+                <span
+                  *ngIf="loadingButton"
+                  class="spinner-border spinner-border-sm m-2"
+                ></span>
+              </button>
+              <div class="text-center">
+                <hr>
+                <a class="w-100" mat-button color="accent" routerLink="/signup">Signup</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

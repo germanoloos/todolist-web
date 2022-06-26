@@ -1,0 +1,10 @@
+<div class="container-fluid">
+  <div class="d-flex flex-wrap m-2">
+    <app-project-card
+      *ngFor="let project of projects"
+      [project]="project"
+      (deleteRequest)="cardEventEmmiter($event)"
+    ></app-project-card>
+    <app-new-project (createRequest)="cardEventEmmiter($event)"></app-new-project>
+  </div>
+</div>
