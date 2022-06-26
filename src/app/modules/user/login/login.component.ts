@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit, AfterViewChecked {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['afranio@gmail.com', [Validators.required, Validators.email]],
-      password: ['12345678', [Validators.required, Validators.min(8)]]
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.min(8)]]
     });
   }
 
