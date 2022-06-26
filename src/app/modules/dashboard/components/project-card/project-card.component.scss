@@ -1,9 +1,16 @@
+@import "../../../../core/scss/variables.scss";
 .project-card {
     min-width: 400px;
     margin: 20px;
 }
-mat-icon{
+mat-icon {
     cursor: pointer;
     font-size: 18px;
-    padding-top: 3px;
+    padding-top: 5px;
+}
+
+.task-item:hover {
+    padding: 3px;
+    background-color: $light-medium;
+    border-radius: 3px;
 }
