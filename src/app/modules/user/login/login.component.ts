@@ -12,7 +12,6 @@ import { AuthenticationService } from '../services/authentication.service';
 export class LoginComponent implements OnInit, AfterViewChecked {
 
   loginForm!: FormGroup;
-  inputType = 'password';
   loading = true;
   loadingButton = false;
   constructor(
