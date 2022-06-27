@@ -39,7 +39,6 @@ export class ProjectCardComponent implements OnInit {
     const task = this.taskForm.value;
     this.dashboardService.addTask(this.project.id, this.taskForm.value).subscribe((resp: any) => {
       this.project.tasks.push({ ...resp, ...task })
-      console.log(resp);
       this.taskForm.reset();
       formDirective.resetForm()
     })
@@ -58,7 +57,6 @@ export class ProjectCardComponent implements OnInit {
       if (task.id === taskId) {
         task.done = event.checked;
         task = await this.updateTask(task).toPromise();
-        console.log(task)
       }
     });
   }

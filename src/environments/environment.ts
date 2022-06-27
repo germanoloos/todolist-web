@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://todolist-api-delta.vercel.app'
-  // API_URL: 'https://todolist-api.herokuapp.com',
+  API_URL: 'http://localhost:3000'
 };
 
 /*

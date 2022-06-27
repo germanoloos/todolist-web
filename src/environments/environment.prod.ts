@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: 'https://todolist-api-delta.vercel.app',
+  API_URL: 'https://todolist-bt-api.vercel.app',
 };

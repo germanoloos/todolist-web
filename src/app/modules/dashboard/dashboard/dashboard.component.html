@@ -4,7 +4,11 @@
       *ngFor="let project of projects"
       [project]="project"
       (deleteRequest)="cardEventEmmiter($event)"
+      class="col-12 col-md-6 col-lg-4 col-xl-3"
     ></app-project-card>
-    <app-new-project (createRequest)="cardEventEmmiter($event)"></app-new-project>
+    <app-new-project
+      class="col-12 col-md-6 col-lg-4 col-xl-3"
+      (createRequest)="cardEventEmmiter($event)"
+    ></app-new-project>
   </div>
 </div>
