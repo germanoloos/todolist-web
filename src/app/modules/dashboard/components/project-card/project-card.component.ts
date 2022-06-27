@@ -110,7 +110,10 @@ export class ProjectCardComponent implements OnInit {
         _task.description = input;
         this.updateTask(_task).subscribe(
           () => { },
-          error => console.error(error)
+          error => {
+            this.dialogService.alert(error.error.message);
+            console.error(error);
+          }
         );
       }
     })
@@ -122,7 +125,10 @@ export class ProjectCardComponent implements OnInit {
       if (ok) {
         this.dashboardService.deleteTask(id).subscribe(() => {
           this.project.tasks = this.project.tasks.filter((item) => item.id !== id);
-        }, error => console.error(error));
+        }, error => {
+          this.dialogService.alert(error.error.message);
+          console.error(error);
+        });
       }
     })
   }
